@@ -1,6 +1,7 @@
 ---
 driver:
   name: vagrant
+  require_chef_omnibus: 12
 
 provisioner:
   name: chef_zero
@@ -14,7 +15,6 @@ verifier:
 
 platforms:
   - name: ubuntu-14.04
-  - name: centos-7.2
 
 suites:
   - name: default
