@@ -31,3 +31,17 @@ apt_package 'mongodb-org'
 service 'mongod' do
   action [:enable, :start]
 end
+
+# Write the seed file out to the node to initialise the Database
+cookbook_file node['mongo_db']['database']['seed_file'] do
+  source 'data.json'
+  mode '0644'
+  owner 'mongodb'
+  group 'mongodb'
+end
+
+# Seed a new collection
+execute 'Seed test Databatse' do
+  command "mongoimport --db #{node['mongo_db']['database']['name']} --collection #{node['mongo_db']['database']['collection']}  --file #{node['mongo_db']['database']['seed_file']}"
+  not_if "mongo test --eval \"printjson(db.getCollectionNames())\" | grep #{node['mongo_db']['database']['collection']}"
+end

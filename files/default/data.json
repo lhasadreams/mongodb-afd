@@ -1,0 +1,12 @@
+  {
+    "name": "Adrian Daniels",
+    "email": "adrian.daniels@me.com",
+    "age": 48,
+    "admin": true
+  }
+  {
+    "name": "Jen Ford",
+    "email": "jford@gmail.com",
+    "age": 45,
+    "admin": false
+  }
